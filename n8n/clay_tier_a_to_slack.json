@@ -1,0 +1,79 @@
+{
+  "name": "Clay Tier A → Slack (routed by region)",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "clay-tier-a",
+        "responseMode": "onReceived",
+        "options": {}
+      },
+      "name": "Clay webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "clay-tier-a"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Map each Tier A account to a region, an owner and a Slack channel, then build the message.\nconst REGIONS = {\n  EMEA:     { owner: 'Lucía (EMEA BDR)',     channel: 'bdr-emea',     countries: ['ES','FR','DE','GB','NL','SE','LT','IE','IT','PT','BE','CH','AT','DK','NO','FI','PL','CZ','IL','AE'] },\n  Americas: { owner: 'Jake (Americas BDR)',  channel: 'bdr-americas', countries: ['US','CA','MX','BR','AR','CL','CO','PE'] },\n  APAC:     { owner: 'Mei (APAC BDR)',       channel: 'bdr-apac',     countries: ['AU','NZ','SG','JP','IN','HK','KR','CN'] },\n};\n\nreturn $input.all().map(item => {\n  const a = item.json.body ?? item.json;          // Clay sends the row as the request body\n  const v = k => (a[k] ?? '') === '' ? 'n/a' : a[k];   // never print \"undefined\" in Slack\n  const country = (a.country || '').toUpperCase();\n  const [region, r] = Object.entries(REGIONS).find(([, v]) => v.countries.includes(country))\n                      ?? ['EMEA', REGIONS.EMEA];  // fallback so no alert is ever lost\n\n  const text = [\n    `:dart: *Tier A account: ${v('name')}* (${v('domain')})`,\n    `*Owner:* ${r.owner}  ·  *Region:* ${region}`,\n    `• *Why:* ${v('reason')}`,\n    `• *Lookalike:* ${v('lookalike_score')}/100, most similar to ${v('nearest_customer')}`,\n    `• *LLM confidence:* ${v('confidence')}  ·  *Headcount:* ${v('headcount')}  ·  *Country:* ${country || 'unknown'}`,\n    `*Next step:* find the Head of Sales / RevOps and add them to the cadence.`,\n  ].join('\\n');\n\n  return { json: { region, owner: r.owner, channel: r.channel, text, account: a } };\n});"
+      },
+      "name": "Route to owner",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        260,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "={{ $json.channel }}",
+          "mode": "name"
+        },
+        "text": "={{ $json.text }}",
+        "otherOptions": {}
+      },
+      "name": "Send Slack alert",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.2,
+      "position": [
+        520,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "Clay webhook": {
+      "main": [
+        [
+          {
+            "node": "Route to owner",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Route to owner": {
+      "main": [
+        [
+          {
+            "node": "Send Slack alert",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

@@ -1,0 +1,51 @@
+domain,label,borderline,note
+factorial.co,Yes,,B2B HR SaaS
+cabify.com,No,,Consumer ride-hailing
+qonto.com,No,yes,Business banking (fintech) rather than SaaS; judgment call
+personio.com,Yes,,B2B HR SaaS
+glovoapp.com,No,,Consumer delivery marketplace
+payhawk.com,Yes,,B2B spend management SaaS
+notion.so,No,,Too big (>5k)
+wallapop.com,No,,Consumer marketplace
+agicap.com,Yes,,B2B treasury SaaS
+hubspot.com,No,,Too big (>5k)
+idealista.com,No,,Consumer property portal
+front.com,Yes,,B2B SaaS
+spotify.com,No,,Consumer streaming
+gorgias.com,Yes,,B2B SaaS for ecommerce brands
+lemlist.com,Yes,,B2B sales SaaS (277 staff)
+zara.com,,,Enrichment failed (wrong match) - excluded
+brevo.com,Yes,,B2B marketing SaaS
+canva.com,No,,Too big; largely consumer/prosumer
+mercadona.es,No,,Retailer
+contentsquare.com,Yes,,B2B analytics SaaS
+bbva.com,No,,Bank
+calendly.com,Yes,,B2B scheduling SaaS
+dataiku.com,Yes,,B2B AI platform
+telefonica.com,No,,Telco giant
+celonis.com,Yes,,B2B process mining SaaS
+salesforce.com,No,,Too big
+duolingo.com,No,,Consumer app
+remote.com,Yes,yes,B2B HR SaaS; real staff well under 5k but Clay says 19.9k (bad data)
+landbot.io,No,,Too small (67)
+vinted.com,No,,Consumer marketplace
+productboard.com,Yes,,B2B product SaaS
+sumup.com,No,yes,Payments for small merchants; fintech not SaaS
+booking.com,No,,Consumer travel
+pandadoc.com,Yes,,B2B document SaaS
+deel.com,No,yes,B2B HR SaaS but likely >5k
+airbnb.com,No,,Consumer marketplace
+ironcladapp.com,Yes,,B2B contract SaaS
+accenture.com,No,,Consultancy
+swile.co,Yes,yes,B2B employee-benefits platform (card + app); fintech-ish
+sennder.com,No,,Digital freight forwarder (logistics)
+ogilvy.com,No,,Agency
+onfido.com,No,yes,Acquired by Entrust - account no longer exists as such
+revolut.com,No,,Mostly consumer fintech; too big
+iberia.com,No,,Airline
+miro.com,Yes,,B2B collaboration SaaS
+decathlon.com,No,,Retailer
+holded.com,Yes,,B2B accounting SaaS (258 staff)
+feverup.com,No,,Consumer events
+freepik.com,No,yes,Mostly creator/consumer subscriptions
+elcorteingles.es,No,,Retailer
