@@ -4,6 +4,8 @@ An account scoring workflow that tells BDRs which companies to work first, and a
 
 Built in Clay, with a small FastAPI embedding service and an n8n → Slack alert. Tested on 50 real companies against hand-labelled ground truth.
 
+**Write-up:** [ICP Scoring Engine: Clay + LLM + Embeddings](https://docs.google.com/document/d/1jai4cQeQAPlOeYR1QGj31qsSPm9xRHvq7KzOPFUKpXo/edit?usp=sharing)
+
 ## Results
 
 | Method | Accuracy | Precision | Recall | Cost per account |
@@ -15,7 +17,7 @@ Built in Clay, with a small FastAPI embedding service and an n8n → Slack alert
 
 - The LLM does the judging. Embeddings alone are weak (ROC AUC 0.71): they can't see company size, and buzzwords fool them. They are useful as a **free pre-filter**.
 - **Tier A:** 11 accounts, 10 real fits. **Tier C:** 28 accounts, no real fit in it.
-- Full numbers: [`eval/results.md`](eval/results.md). Write-up: see the linked doc.
+- Full numbers: [`eval/results.md`](eval/results.md). Full write-up: [Google Doc](https://docs.google.com/document/d/1jai4cQeQAPlOeYR1QGj31qsSPm9xRHvq7KzOPFUKpXo/edit?usp=sharing).
 
 ## How it works
 
