@@ -66,7 +66,7 @@ Prompt history: v1 had no output rules (format drift: "Not a fit", confidence 0.
 ```
 !{{Description}} ? "No data" : ({{Use AI Fit}} === "Yes" && {{Use AI Confidence 2}} >= 90 && {{Lookalike Score}} >= 60 ? "A" : ({{Use AI Fit}} === "Yes" ? "B" : "C"))
 ```
-Known issue: one row still returns confidence 0.96 instead of 96. Normalising with `({{Use AI Confidence 2}} <= 1 ? {{Use AI Confidence 2}} * 100 : {{Use AI Confidence 2}})` fixes it.
+Optional safeguard: the v1 prompt once returned confidence as 0.96 instead of 96 (fixed by the output rules and a re-run). To make the tier immune to that slip, normalise with `({{Use AI Confidence 2}} <= 1 ? {{Use AI Confidence 2}} * 100 : {{Use AI Confidence 2}})` fixes it.
 
 ## 8. Send to Slack (HTTP API column)
 - `POST https://<your-n8n>/webhook/clay-tier-a`

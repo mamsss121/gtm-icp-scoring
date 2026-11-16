@@ -1,5 +1,5 @@
 domain,name,country,employee_count_clay,headcount_final,llm_fit,llm_confidence,llm_reason,lookalike_score,max_similarity,nearest_customer,send_to_llm,tier,slack_alert_sent
-factorial.co,Factorial,ES,3004.0,3004.0,Yes,0.96,"Factorial is a B2B software company serving businesses, with employee counts within the target range and a likely sales team.",57.0,50.0,HiBob,True,B,False
+factorial.co,Factorial,ES,3004.0,3004.0,Yes,96.0,"Factorial is a B2B software company serving businesses, with employee counts within the target range and a likely sales team.",57.0,50.0,HiBob,True,B,False
 cabify.com,Cabify,ES,4854.0,4854.0,No,96.0,"Cabify is primarily a consumer mobility platform and marketplace, not a B2B software/SaaS company.",54.0,53.0,Pipedrive,True,C,False
 qonto.com,Qonto,FR,2494.0,2494.0,No,90.0,"Qonto primarily provides business banking and financial services, which the ICP excludes, despite its in-range headcount and business customers.",54.0,51.0,Spendesk,True,C,False
 personio.com,Personio,DE,2120.0,2120.0,Yes,97.0,"Personio is a B2B SaaS HR platform with 2,120 employees, serving business customers and likely maintaining a sales team.",85.0,78.0,HiBob,True,A,True
